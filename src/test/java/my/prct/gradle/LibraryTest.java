@@ -13,5 +13,7 @@ public class LibraryTest {
         assertTrue("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
         
         assertFalse("test false ", classUnderTest.someLibraryMethod());
+        
+        assertFalse("test false ", classUnderTest.someLibraryMethod());
     }
 }
