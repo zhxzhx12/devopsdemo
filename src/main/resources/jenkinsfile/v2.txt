@@ -18,12 +18,11 @@ pipeline {
       stage('Build') {
           steps {
             script {
-            if (isUnix()) {
-              def  gradleHome = tool 'mylocalGradle'
-              sh "'${gradleHome}/bin/gradle' clean build -x test"
-            } else {
-              // bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
-            }
+              if (isUnix()) {
+                sh "'${gradleHome}/bin/gradle' clean build -x test"
+              } else {
+                // bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
+              }
             }
           }
       }
@@ -31,11 +30,14 @@ pipeline {
       stage('Test and Run Docker') {
           steps {
             sh "'${gradleHome}/bin/gradle' test "
+          }
 
-            dir("build/test-results/test"){
-              junit 'TEST-*.xml'
-            }
-        }
+          post{
+            echo "alway post below steps"
+          }
+          failure{
+            echo "got some test error"
+          }
       }
 
       stage("Build Docker"){
@@ -45,5 +47,17 @@ pipeline {
       }
 
     }
+
+    post {
+        always {
+          dir("build/test-results/test"){
+            junit 'TEST-*.xml'
+          }
+        }
+        failure {
+            //mail to: team@example.com, subject: 'The Pipeline failed :('
+            echo "got some test error"
+        }
+      }
 
 }
