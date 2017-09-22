@@ -1,0 +1,50 @@
+node {
+
+   def gradleHome
+
+   env.PATH = "${tool 'mylocalGradle'}/bin:${env.PATH}"
+
+   stage('Checkout Git') {
+
+      ansiColor('xterm'){
+
+        git 'https://github.com/zhxzhx12/devopsdemo.git'
+      }
+
+     gradleHome = tool 'mylocalGradle'
+
+   }
+
+   stage('Build') {
+      // Run the Gradle  build
+      if (isUnix()) {
+          sh "'${gradleHome}/bin/gradle' clean build -x test"
+
+        // sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
+      } else {
+        // bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
+      }
+   }
+   stage('Test and Run Docker') {
+
+        try{
+          sh "'${gradleHome}/bin/gradle' test "
+          echo "let's build Docker now"
+        }catch(error){
+
+        }finally{
+          dir("build/test-results/test"){
+          
+          	echo "let's show test now"
+            junit 'TEST-*.xml'
+            // junit '**/target/surefire-reports/TEST-*.xml'
+          }
+        }
+
+     // archive 'target/*.jar'
+   }
+
+   stage("Build Docker"){
+    //${env.BUILD_NUMBER}
+   }
+}

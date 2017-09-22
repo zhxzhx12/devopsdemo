@@ -19,7 +19,7 @@ pipeline {
           steps {
             script {
               if (isUnix()) {
-                sh "'${gradleHome}/bin/gradle' clean build -x test"
+                sh "'${gradleHome}/bin/gradle' clean build jar -x test -x war"
               } else {
                 // bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
               }
@@ -44,7 +44,7 @@ pipeline {
 
       stage("Build Docker and Run"){
         	steps{
-                dir('/Users/hx/work/mytest/docker/devops_demo_docker/'){
+                dir('build/resources/dockerfile'){
                   script{
                     def customImage = docker.build("zhx12/devopsdemo:0.2")
                     echo customImage.imageName()
