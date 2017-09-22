@@ -38,7 +38,8 @@ pipeline {
       }
 
       stage("Build Docker"){
-        //${env.BUILD_NUMBER}
+        	steps{
+        	}
       }
 
     }
