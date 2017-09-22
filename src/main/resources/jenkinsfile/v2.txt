@@ -17,7 +17,7 @@ pipeline {
 
       stage('Build') {
           steps {
-            node{
+            script {
             if (isUnix()) {
               sh "'${gradleHome}/bin/gradle' clean build -x test"
             } else {
