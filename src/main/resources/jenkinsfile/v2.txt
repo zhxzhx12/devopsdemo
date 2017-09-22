@@ -42,9 +42,13 @@ pipeline {
           }
       }
 
-      stage("Build Docker"){
+      stage("Build Docker and Run"){
         	steps{
-        		echo "build docker"
+                dir('/Users/hx/work/mytest/docker/devops_demo_docker/'){
+                  def customImage = docker.build("zhx12/devopsdemo:0.2")
+                  echo customImage.imageName()
+                  customImage.run("-p 5050:8080")
+             }
         	}
       }
 
@@ -53,8 +57,7 @@ pipeline {
     post {
         always {
           dir("build/test-results/test"){
-
-            //junit 'TEST-*.xml'
+            junit 'TEST-*.xml'
           }
         }
         failure {
