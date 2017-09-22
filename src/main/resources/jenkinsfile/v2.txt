@@ -3,9 +3,9 @@ pipeline {
   agent any
   // def gradleHome
 
-    //environment {
-    //    gradleHome = tool 'mylocalGradle'
-  //  }
+    environment {
+        gradleHome = script{tool 'mylocalGradle'}
+   }
 
     stages {
 
