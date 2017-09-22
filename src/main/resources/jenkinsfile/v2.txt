@@ -34,6 +34,8 @@ node {
 
         }finally{
           dir("build/test-results/test"){
+          
+          	echo "let's show test now"
             junit 'TEST-*.xml'
             // junit '**/target/surefire-reports/TEST-*.xml'
           }
