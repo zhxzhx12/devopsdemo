@@ -3,9 +3,9 @@ pipeline {
   agent any
   // def gradleHome
 
-    environment {
-        gradleHome = tool 'mylocalGradle'
-    }
+    //environment {
+    //    gradleHome = tool 'mylocalGradle'
+  //  }
 
     stages {
 
@@ -19,6 +19,7 @@ pipeline {
           steps {
             script {
             if (isUnix()) {
+              def  gradleHome = tool 'mylocalGradle'
               sh "'${gradleHome}/bin/gradle' clean build -x test"
             } else {
               // bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
