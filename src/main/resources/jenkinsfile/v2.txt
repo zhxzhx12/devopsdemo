@@ -27,7 +27,7 @@ pipeline {
           }
       }
 
-      stage('Test and Run Docker') {
+      stage('Test ') {
           steps {
             sh "'${gradleHome}/bin/gradle' test "
           }
@@ -53,7 +53,8 @@ pipeline {
     post {
         always {
           dir("build/test-results/test"){
-            junit 'TEST-*.xml'
+
+            //junit 'TEST-*.xml'
           }
         }
         failure {
