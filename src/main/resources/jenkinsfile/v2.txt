@@ -33,10 +33,12 @@ pipeline {
           }
 
           post{
-            echo "alway post below steps"
-          }
-          failure{
-            echo "got some test error"
+            always{
+                echo "alway post below steps"
+            }
+            failure{
+                echo "got some test error"
+            }
           }
       }
 
