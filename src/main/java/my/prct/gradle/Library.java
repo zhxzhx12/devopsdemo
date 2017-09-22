@@ -15,6 +15,10 @@ public class Library {
         return true;
     }
     
+    public boolean oneMethodReturnFalse() {
+        return false;
+    }
+    
 //    @RequestMapping("/greeting")
     @RequestMapping(path="/greeting",method=RequestMethod.GET)
     

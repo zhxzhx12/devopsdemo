@@ -20,7 +20,7 @@ public class LibraryTest {
     @Test
     public void test2(){
     	Library library = new Library();
-    	assertFalse("test false 2", library.someLibraryMethod());
+    	assertFalse("test false 2", library.oneMethodReturnFalse());
     	
     }
     
