@@ -4,7 +4,7 @@ node {
 
    env.PATH = "${tool 'mylocalGradle'}/bin:${env.PATH}"
 
-   stage('checkout Git') {
+   stage('Checkout Git') {
 
       ansiColor('xterm'){
 
@@ -29,7 +29,7 @@ node {
 
         try{
           sh "'${gradleHome}/bin/gradle' test "
-          echo "let's build"
+          echo "let's build Docker now"
         }catch(error){
 
         }finally{
