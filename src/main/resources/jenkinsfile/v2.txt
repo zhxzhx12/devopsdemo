@@ -45,9 +45,11 @@ pipeline {
       stage("Build Docker and Run"){
         	steps{
                 dir('/Users/hx/work/mytest/docker/devops_demo_docker/'){
-                  def customImage = docker.build("zhx12/devopsdemo:0.2")
-                  echo customImage.imageName()
-                  customImage.run("-p 5050:8080")
+                  script{
+                    def customImage = docker.build("zhx12/devopsdemo:0.2")
+                    echo customImage.imageName()
+                    customImage.run("-p 5050:8080")
+                  }
              }
         	}
       }
