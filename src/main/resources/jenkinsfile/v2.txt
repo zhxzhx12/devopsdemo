@@ -44,6 +44,7 @@ pipeline {
 
       stage("Build Docker and Run"){
         	steps{
+                sh "'${gradleHome}/bin/gradle' copyJar "
                 dir('build/resources/main/dockerfile'){
                   script{
                     def customImage = docker.build("zhx12/devopsdemo:0.2")
