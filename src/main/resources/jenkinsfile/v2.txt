@@ -44,7 +44,7 @@ pipeline {
 
       stage("Build Docker and Run"){
         	steps{
-                dir('build/resources/dockerfile'){
+                dir('build/resources/main/dockerfile'){
                   script{
                     def customImage = docker.build("zhx12/devopsdemo:0.2")
                     echo customImage.imageName()
@@ -64,7 +64,7 @@ pipeline {
         }
         failure {
             //mail to: team@example.com, subject: 'The Pipeline failed :('
-            echo "got some test error"
+            echo "got some  error"
         }
       }
 
