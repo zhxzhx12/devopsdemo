@@ -39,6 +39,7 @@ pipeline {
 
       stage("Build Docker"){
         	steps{
+        		echo "build docker"
         	}
       }
 
