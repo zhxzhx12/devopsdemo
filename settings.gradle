@@ -15,4 +15,4 @@ include 'api'
 include 'services:webservice'
 */
 
-rootProject.name = 'testgradle'
+rootProject.name = 'devopsdemo_v1'

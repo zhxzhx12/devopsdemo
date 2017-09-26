@@ -24,7 +24,7 @@ public class Library {
     
     public String greeting(@RequestParam(value="name",required=false,defaultValue="world") String name, Model model) {
     	
-    	model.addAttribute("name",name + "4455454rrrrrrrr");
+    	model.addAttribute("name",name);
 		return "greeting";
 	}
     
