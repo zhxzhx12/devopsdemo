@@ -48,14 +48,13 @@ pipeline {
                 dir('build/resources/main/dockerfile'){
                   script{
                       try{
-                           sh "docker stop \$(docker ps -q)"
-                           sh "docker rm \$(docker ps -aq)"
+                           sh "sudo docker stop \$(docker ps -q)"
+                           sh "sudo docker rm \$(docker ps -aq)"
                        }catch(error){
 
                        }
 
                       def customImage = docker.build("zhx12/devopsdemo:0.2")
-                      sh "docker ps -a"
                       echo customImage.imageName()
                       customImage.run("-p 5050:8080")
                   }
