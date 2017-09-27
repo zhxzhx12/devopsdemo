@@ -47,10 +47,17 @@ pipeline {
                 sh "'${gradleHome}/bin/gradle' copyJar "
                 dir('build/resources/main/dockerfile'){
                   script{
-                    def customImage = docker.build("zhx12/devopsdemo:0.2")
-                    sh "docker ps -a"
-                    echo customImage.imageName()
-                    customImage.run("-p 5050:8080")
+                      try{
+                           sh "docker stop \$(docker ps -q)"
+                           sh "docker rm \$(docker ps -aq)"
+                       }catch(error){
+
+                       }
+
+                      def customImage = docker.build("zhx12/devopsdemo:0.2")
+                      sh "docker ps -a"
+                      echo customImage.imageName()
+                      customImage.run("-p 5050:8080")
                   }
              }
         	}
