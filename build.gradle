@@ -26,7 +26,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'propdeps-maven'
-//apply plugin: 'war'
+//apply plugin: 'war'  
 
 jar {
     baseName = 'test-gradle-web-content'
