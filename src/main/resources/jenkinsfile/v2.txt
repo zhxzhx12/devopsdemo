@@ -19,7 +19,7 @@ pipeline {
           steps {
             script {
               if (isUnix()) {
-                sh "'${gradleHome}/bin/gradle' clean build jar -x test -x war"
+                sh "'${gradleHome}/bin/gradle' clean build -x test"
               } else {
                 // bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
               }
