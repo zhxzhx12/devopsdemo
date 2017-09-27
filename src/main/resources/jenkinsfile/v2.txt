@@ -48,8 +48,8 @@ pipeline {
                 dir('build/resources/main/dockerfile'){
                   script{
                       try{
-                           sh "sudo docker stop \$(docker ps -q)"
-                           sh "sudo docker rm \$(docker ps -aq)"
+                           sh "sudo docker stop \$(sudo docker ps -q)"
+                           sh "sudo docker rm \$(sudo docker ps -aq)"
                        }catch(error){
 
                        }
