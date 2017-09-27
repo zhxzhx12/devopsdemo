@@ -48,6 +48,7 @@ pipeline {
                 dir('build/resources/main/dockerfile'){
                   script{
                     def customImage = docker.build("zhx12/devopsdemo:0.2")
+                    sh "docker ps -a"
                     echo customImage.imageName()
                     customImage.run("-p 5050:8080")
                   }
