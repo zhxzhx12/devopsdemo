@@ -47,10 +47,10 @@ pipeline {
                 sh "'${gradleHome}/bin/gradle' copyJar "
                 dir('build/resources/main/dockerfile'){
 
-                docker stop devops_web_demo || true
-                docker rm devops_web_demo || true
-                
                   script{
+                        docker stop devops_web_demo || true
+                        docker rm devops_web_demo || true
+
                         sh " docker stop \$( docker ps -q)") || true
                         sh " docker rm \$( docker ps -aq)")  || true
 
