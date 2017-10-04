@@ -47,11 +47,17 @@ pipeline {
                 sh "'${gradleHome}/bin/gradle' copyJar "
                 dir('build/resources/main/dockerfile'){
                   script{
-                      try{
-                           sh "sudo docker stop \$(sudo docker ps -q)"
-                           sh "sudo docker rm \$(sudo docker ps -aq)"
-                       }catch(error){
+                        sh " docker stop \$( docker ps -q)" || true
+                        sh " docker rm \$( docker ps -aq)"  || true
 
+                        echo "try to remove again"
+
+
+                      try{
+                           sh " docker stop \$( docker ps -q)"
+                           sh " docker rm \$( docker ps -aq)"
+                       }catch(error){
+                            echo "get some error when rm container"
                        }
 
                       def customImage = docker.build("zhx12/devopsdemo:0.2")
