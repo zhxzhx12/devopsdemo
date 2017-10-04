@@ -47,8 +47,8 @@ pipeline {
                 sh "'${gradleHome}/bin/gradle' copyJar "
                 dir('build/resources/main/dockerfile'){
                   script{
-                        sh " docker stop \$( docker ps -q)" || true
-                        sh " docker rm \$( docker ps -aq)"  || true
+                         docker stop \$( docker ps -q) || true
+                       docker rm \$( docker ps -aq) || true
 
                         echo "try to remove again"
 
