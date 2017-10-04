@@ -46,9 +46,13 @@ pipeline {
         	steps{
                 sh "'${gradleHome}/bin/gradle' copyJar "
                 dir('build/resources/main/dockerfile'){
+
+                docker stop devops_web_demo || true
+                docker rm devops_web_demo || true
+                
                   script{
-                        (sh " docker stop \$( docker ps -q)") || true
-                        (sh " docker rm \$( docker ps -aq)")  || true
+                        sh " docker stop \$( docker ps -q)") || true
+                        sh " docker rm \$( docker ps -aq)")  || true
 
                         echo "try to remove again"
 
