@@ -50,15 +50,15 @@ pipeline {
                   script{
 
                       try{
-                           sh " docker stop \$( docker ps -q)"
-                           sh " docker rm \$( docker ps -aq)"
+                           sh " docker stop devopsdemo_web"
+                           sh " docker rm devopsdemo_web"
                        }catch(error){
                             echo "get some error when rm container"
                        }
 
                       def customImage = docker.build("zhx12/devopsdemo:0.2")
                       echo customImage.imageName()
-                      customImage.run("-p 5050:8080")
+                      customImage.run("--name devopsdemo_web -p 5050:8080")
                   }
              }
         	}
