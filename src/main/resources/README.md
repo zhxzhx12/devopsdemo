@@ -31,12 +31,12 @@
 10. Open your browser. go to <http://localhost:5050/greeting>. you will got "Hello. world!" in your browser page.
 this means the demo RUN OK
 
-11. All this demo code are managed by github.com - <https://github.com/zhxzhx12/devopsdemo.git>
-  Include:
+11. All this demo codes are managed by github.com - <https://github.com/zhxzhx12/devopsdemo.git>
+</br>Include:
     - Jenkins pileline script:  /src/main/resources/jenkinsfile/v2.txt
     - Dockerfile for this demo web projct :  /src/main/resources/dockerfile/Dockerfile
     - Gradle Build script :  build.gradle
     - Main java code : src/main/java
     - Junit and spring web test : src/test
 
-12. Checkout the code from github. and update it if you want
+12. Checkout the code from github. and update it if you want;
