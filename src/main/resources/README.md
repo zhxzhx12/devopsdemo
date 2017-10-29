@@ -1,6 +1,7 @@
 0. Open the terminator in your OS
 
 1. Pull docker image : docker pull zhx12/myjenkins
+   You need to sign up and login the <https://hub.docker.com> by run 'docker login' in your terminator
 
 2. Run docker images:
     docker run -p 9091:8080 -p 50000:50000 --name testmyJenkins -v /var/run/docker.sock:/var/run/docker.sock  zhx12/myjenkins:1.1
