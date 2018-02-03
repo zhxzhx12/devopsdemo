@@ -1,6 +1,7 @@
 0. Open the terminator in your OS
 
 1. Pull docker image : docker pull zhx12/myjenkins
+
    You need to sign up and login the <https://hub.docker.com> by run 'docker login' in your terminator
 
 2. Run docker images:

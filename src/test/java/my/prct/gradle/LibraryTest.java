@@ -8,20 +8,20 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class LibraryTest {
-    @Test 
+    @Test
     public void testSomeLibraryMethod() {
         Library classUnderTest = new Library();
         assertTrue("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
-        
+
         //assertFalse("test false 1", classUnderTest.someLibraryMethod());
-        
+
     }
     
     @Test
     public void test2(){
     	Library library = new Library();
     	assertFalse("test false 2", library.oneMethodReturnFalse());
-    	
+
     }
-    
+
 }
