@@ -6,8 +6,8 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 
 @SpringBootApplication
 public class Application  extends SpringBootServletInitializer {
-	
-	
+
+	//uu
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
@@ -16,7 +16,7 @@ public class Application  extends SpringBootServletInitializer {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args); 
+		SpringApplication.run(Application.class, args);
 
 	}
 
