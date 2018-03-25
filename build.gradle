@@ -3,27 +3,30 @@
 
      repositories {
         mavenCentral()
-        maven { url 'http://repo.spring.io/plugins-release' }
+       // maven { url 'http://repo.spring.io/plugins-release' }
     }
 
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.7.RELEASE")
-        classpath 'io.spring.gradle:propdeps-plugin:0.0.9.RELEASE'
+        //classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.7.RELEASE")
+      //  classpath 'io.spring.gradle:propdeps-plugin:0.0.9.RELEASE'
+       classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.0.RELEASE") 
+        
     }
 
-    ext { springBootVersion = '1.5.7.RELEASE' }
+   // ext { springBootVersion = '1.5.7.RELEASE' }
 }
 
 // Apply the java-library plugin to add support for Java Library
-apply plugin: 'java-library'
+//apply plugin: 'java-library'
 apply plugin: 'java'
-apply plugin: 'eclipse'
+//apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
-apply plugin: 'propdeps-maven'
+//apply plugin: 'propdeps-maven'
 //apply plugin: 'war'
+apply plugin : 'io.spring.dependency-management'
 
-jar {
-    baseName = 'test-gradle-web-content'
+bootJar {
+    baseName = 'test-boot-web-content'
     version =  '0.1.0'
 }
 
@@ -31,7 +34,8 @@ jar {
 repositories {
     // Use jcenter for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
-    jcenter()
+    //jcenter()
+    mavenCentral()
 }
 
 sourceCompatibility = 1.8
@@ -41,22 +45,23 @@ tasks.withType(JavaCompile) { options.encoding = "UTF-8" }
 
 dependencies {
     // This dependency is exported to consumers, that is to say found on their compile classpath.
-    api 'org.apache.commons:commons-math3:3.6.1'
+    //api 'org.apache.commons:commons-math3:3.6.1'
 
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
     implementation 'com.google.guava:guava:21.0'
 
     // Use JUnit test framework
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit'
 
     compile("org.springframework.boot:spring-boot-starter-web"){
-    	exclude group: "org.springframework.boot", module: "spring-boot-starter-tomcat"
+    	//exclude group: "org.springframework.boot", module: "spring-boot-starter-tomcat"
     }
-    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+   // compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("org.springframework.boot:spring-boot-devtools")
-    optional("org.springframework.boot:spring-boot-devtools")
+    //optional("org.springframework.boot:spring-boot-devtools")
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
+    testCompile("junit:junit")
 }
 
 task copyJar {

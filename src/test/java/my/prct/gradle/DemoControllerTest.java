@@ -7,10 +7,10 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class LibraryTest {
+public class DemoControllerTest {
     @Test
     public void testSomeLibraryMethod() {
-        Library classUnderTest = new Library();
+        DemoController classUnderTest = new DemoController();
         assertTrue("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
 
         //assertFalse("test false 1", classUnderTest.someLibraryMethod());
@@ -19,7 +19,7 @@ public class LibraryTest {
     
     @Test
     public void test2(){
-    	Library library = new Library();
+    	DemoController library = new DemoController();
     	assertFalse("test false 2", library.oneMethodReturnFalse());
 
     }
