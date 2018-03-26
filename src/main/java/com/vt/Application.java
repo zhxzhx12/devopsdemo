@@ -1,4 +1,4 @@
-package my.prct;
+package com.vt;
 import java.util.Arrays;
 
 import org.springframework.boot.CommandLineRunner;
