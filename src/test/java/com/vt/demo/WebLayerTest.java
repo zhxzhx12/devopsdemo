@@ -18,9 +18,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-@AutoConfigureMockMvc
+//@RunWith(SpringRunner.class)
+//@SpringBootTest
+//@AutoConfigureMockMvc
 //@WebMvcTest
 public class WebLayerTest {
 
@@ -33,7 +33,7 @@ public class WebLayerTest {
                 .andExpect(content().string(containsString("Hello, world!")));
     }
     
-    @Test
+//    @Test
     public void getHello() throws Exception {
     	mockMvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())

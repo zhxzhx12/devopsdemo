@@ -4,6 +4,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -41,6 +42,7 @@ public class DemoController {
 		return "greeting";
 	}
 
+	 @CrossOrigin(origins = "http://localhost:9000")
 	@RequestMapping(path = "/users", method = RequestMethod.GET)
 	public Iterable<User> greeting(@RequestParam(value = "name", defaultValue = "zhangsan") String name) {
 //		return new User(counter.incrementAndGet(), String.format(template, name));
