@@ -1,5 +1,6 @@
 package com.vt.demo.controller;
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,28 +40,35 @@ public class DemoController {
 	@RequestMapping(path = "/")
 	public String greeting(Model model) {
 
-		return "greeting";
+		return "Greeting ";
 	}
 
-	 @CrossOrigin(origins = "http://localhost:9000")
+	@CrossOrigin(origins = "http://localhost:9000")
 	@RequestMapping(path = "/users", method = RequestMethod.GET)
 	public Iterable<User> greeting(@RequestParam(value = "name", defaultValue = "zhangsan") String name) {
-//		return new User(counter.incrementAndGet(), String.format(template, name));
-		return userRepository.findAll();
+		List<User> users = userRepository.findAll();
+		users.stream().forEach(user -> user.setRoles(null));
+		return users;
+
 	}
 
 	@GetMapping(path = "/user/add")
-	public String addNewUser(@RequestParam String name, @RequestParam String email) {
+	public String addNewUser(@RequestParam String name, @RequestParam(value ="email", required=false) String email) {
 
+		long count = userRepository.count();
+		
 		User n = new User();
 		n.setName(name);
 		n.setEmail(email);
+		n.setPassword(name);
+		
+		n.setId(Long.valueOf(count + 1).intValue());
 		userRepository.save(n);
 		return "Saved";
 	}
-	
-	@GetMapping(path="/all")
-	public  Iterable<User> getAllUsers() {
+
+	@GetMapping(path = "/all")
+	public Iterable<User> getAllUsers() {
 		// This returns a JSON or XML with the users
 		return userRepository.findAll();
 	}

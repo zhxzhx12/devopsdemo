@@ -23,7 +23,7 @@ public class User {
 	@NotNull
 	private String name;
 	
-	@NotNull
+//	@NotNull
 	private String email;
 
 	private String password;

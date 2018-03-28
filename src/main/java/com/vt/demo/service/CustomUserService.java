@@ -5,10 +5,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import com.vt.demo.entity.Permission;
 import com.vt.demo.entity.SysRole;
@@ -16,6 +16,7 @@ import com.vt.demo.entity.User;
 import com.vt.demo.repository.RoleRepository;
 import com.vt.demo.repository.UserRepository;
 
+@Service
 public class CustomUserService implements UserDetailsService {
 
 	@Autowired
@@ -27,7 +28,7 @@ public class CustomUserService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) {
 
 //    	User user = userRepository.findById(1).get();
-		User user = userRepository.findByName(username).get(0);
+		User user = userRepository.findByName(username);
 
 		if (user == null) {
 			throw new UsernameNotFoundException("用户名不存在");

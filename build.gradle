@@ -3,11 +3,9 @@
 
      repositories {
         mavenCentral()
-       // maven { url 'http://repo.spring.io/plugins-release' }
     }
 
     dependencies {
-        //classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.7.RELEASE")
       //  classpath 'io.spring.gradle:propdeps-plugin:0.0.9.RELEASE'
        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.0.RELEASE") 
         
@@ -16,24 +14,19 @@
    // ext { springBootVersion = '1.5.7.RELEASE' }
 }
 
-// Apply the java-library plugin to add support for Java Library
 //apply plugin: 'java-library'
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
-//apply plugin: 'propdeps-maven'
-//apply plugin: 'war'
-apply plugin : 'io.spring.dependency-management'
+apply plugin: 'io.spring.dependency-management'
 
 bootJar {
-    baseName = 'rest-service'
+    baseName = 'vt_authority_mgt'
     version =  '0.1.0'
 }
 
 // In this section you declare where to find the dependencies of your project
 repositories {
-    // Use jcenter for resolving your dependencies.
-    // You can declare any Maven/Ivy/file repository here.
     //jcenter()
     mavenCentral()
 }
@@ -50,8 +43,6 @@ dependencies {
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
     //implementation 'com.google.guava:guava:21.0'
 
-    // Use JUnit test framework
-    //testImplementation 'junit:junit'
 
     compile("org.springframework.boot:spring-boot-starter-web"){
     	//exclude group: "org.springframework.boot", module: "spring-boot-starter-tomcat"
@@ -59,10 +50,9 @@ dependencies {
    // compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("org.springframework.boot:spring-boot-devtools")
     compile("org.springframework.boot:spring-boot-starter-actuator")
-    //optional("org.springframework.boot:spring-boot-devtools")
     compile ('org.mariadb.jdbc:mariadb-java-client:2.2.2')
     compile ('org.springframework.boot:spring-boot-starter-data-jpa')
-     compile("org.springframework.boot:spring-boot-starter-security")
+    compile("org.springframework.boot:spring-boot-starter-security")
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
     testCompile("org.springframework.security:spring-security-test")

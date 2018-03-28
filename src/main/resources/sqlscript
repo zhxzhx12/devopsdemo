@@ -1,5 +1,5 @@
 INSERT INTO `user` (id,name,email, password) values (1,'admin','admin@admin', 'admin');
-insert into `user` (id,name,email,password) values (2,'operator','admin@admin', 'operator');
+insert into `user` (id,name,email,password) values (2,'user','admin@admin', 'user');
 
 insert into sys_role(id,name) values(1,'ROLE_ADMIN');
 insert into sys_role(id,name) values(2,'ROLE_USER');
@@ -8,13 +8,15 @@ insert into user_roles(user_id,roles_id) values(1,1);
 insert into user_roles(user_id,roles_id) values(2,2);
 
 
-INSERT INTO permission(permission.id,permission.name,permission.url) VALUES ('1', 'homepage', '/');
-INSERT INTO permission(permission.id,permission.name,permission.url) VALUES ('2', 'users', '/users');
+INSERT INTO permission(permission.id,permission.name,permission.url, permission.method) VALUES ('1', 'homepage', '/','ALL');
+INSERT INTO permission(permission.id,permission.name,permission.url, permission.method) VALUES ('2', 'get all users', '/users','ALL');
+INSERT INTO permission(permission.id,permission.name,permission.url, permission.method) VALUES ('3', 'add one user', '/user/add','ALL');
 
 
 
 INSERT INTO `permission_role` (permission_role.permission_id, permission_role.role_id) VALUES (1,1);
+INSERT INTO `permission_role` (permission_role.permission_id, permission_role.role_id) VALUES (1,2);
 INSERT INTO `permission_role` (permission_role.permission_id, permission_role.role_id) VALUES (2,2);
+INSERT INTO `permission_role` (permission_role.permission_id, permission_role.role_id) VALUES (3,1);
+INSERT INTO `permission_role` (permission_role.permission_id, permission_role.role_id) VALUES (2,1);
 
-
-https://github.com/527515025/springBoot

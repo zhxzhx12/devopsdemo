@@ -13,7 +13,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.stereotype.Service;
 
+@Service
 public class PermissionAccessDecisionManager implements AccessDecisionManager {
 
 	public void decideRole(Authentication authentication, Object object, Collection<ConfigAttribute> configAttributes)
@@ -64,8 +66,6 @@ public class PermissionAccessDecisionManager implements AccessDecisionManager {
         }
         throw new AccessDeniedException("no right");
     }
-	
-//    https://blog.csdn.net/u012373815/article/details/55225079
 	
 
 	@Override

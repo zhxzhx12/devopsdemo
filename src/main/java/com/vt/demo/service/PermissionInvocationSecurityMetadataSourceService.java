@@ -48,19 +48,23 @@ FilterInvocationSecurityMetadataSource {
 //此方法是为了判定用户请求的url 是否在权限表中，如果在权限表中，则返回给 decide 方法，用来判定用户是否有此权限。如果不在权限表中则放行。
     @Override
     public Collection<ConfigAttribute> getAttributes(Object object) throws IllegalArgumentException {
-        if(map ==null) loadResourceDefine();
-        //object 中包含用户请求的request 信息
-        HttpServletRequest request = ((FilterInvocation) object).getHttpRequest();
-        AntPathRequestMatcher matcher;
-        String resUrl;
-        for(Iterator<String> iter = map.keySet().iterator(); iter.hasNext(); ) {
-            resUrl = iter.next();
-            matcher = new AntPathRequestMatcher(resUrl);
-            if(matcher.matches(request)) {
-                return map.get(resUrl);
-            }
-        }
-        return null;
+//        if(map ==null) loadResourceDefine();
+//        //object 中包含用户请求的request 信息
+//        HttpServletRequest request = ((FilterInvocation) object).getHttpRequest();
+//        AntPathRequestMatcher matcher;
+//        String resUrl;
+//        for(Iterator<String> iter = map.keySet().iterator(); iter.hasNext(); ) {
+//            resUrl = iter.next();
+//            matcher = new AntPathRequestMatcher(resUrl);
+//            if(matcher.matches(request)) {
+//                return map.get(resUrl);
+//            }
+//        }
+//        return null;
+    	
+    	   Collection<ConfigAttribute> co=new ArrayList<>();
+           co.add(new SecurityConfig("null"));
+           return co;
     }
 
     @Override

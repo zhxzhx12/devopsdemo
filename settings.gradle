@@ -15,4 +15,4 @@ include 'api'
 include 'services:webservice'
 */
 
-rootProject.name = 'devopsdemo_v1'
+rootProject.name = 'vt_authority_mgt'
